@@ -19,7 +19,8 @@ function Header(props) {
         </Link>
         {props.currentUser ? (
           <div className="option" onClick={() => auth.signOut()}>
-            SIGN OUT
+            SIGN OUT{" "}
+            <span className="user-name">({props.currentUser.displayName})</span>
           </div>
         ) : (
           <Link to="/signin" className="option">

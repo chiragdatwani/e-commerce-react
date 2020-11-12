@@ -21,6 +21,10 @@
     .option {
       padding: 10px 15px;
 
+      .user-name {
+        font-size: 15px;
+      }
+
       &:hover {
         cursor: pointer;
       }
