@@ -5,9 +5,11 @@ import HomePage from "./pages/homepage/Homepage.component.jsx";
 import ShopPage from "./pages/shop/shop.component";
 import SignInSignUp from "./pages/sign-in-sign-up/sign-in-sign-up.component";
 import Header from "./components/header/header.component";
+import CheckoutPage from "./pages/checkout/checkout.component";
 import { auth, createUserProfileDocument } from "./firebase/firebase.utils";
 import { connect } from "react-redux";
 import { setCurrentUser } from "./redux/user/user.actions";
+import { selectCurrentUser } from "./redux/user/user.selector";
 class App extends React.Component {
   unsubscribeFromAuth = null;
 
@@ -47,6 +49,7 @@ class App extends React.Component {
               this.props.currentUser ? <Redirect to="/" /> : <SignInSignUp />
             }
           />
+          <Route path="/checkout" component={CheckoutPage} />
         </Switch>
       </div>
     );
@@ -57,7 +60,7 @@ const mapDispatchToProps = (dispatch) => ({
   setCurrentUser: (user) => dispatch(setCurrentUser(user)),
 });
 
-const mapStatetoProps = ({ user }) => ({
-  currentUser: user.currentUser,
+const mapStatetoProps = (state) => ({
+  currentUser: selectCurrentUser(state),
 });
 export default connect(mapStatetoProps, mapDispatchToProps)(App);
