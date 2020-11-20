@@ -1,4 +1,3 @@
-import cartIconComponent from "../../components/cart-icon/cart-icon.component";
 import CartActionTypes from "./cart.types";
 
 export const toggleCartHidden = () => ({
